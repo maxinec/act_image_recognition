@@ -1,0 +1,9 @@
+# Mac OS files
+**/.DS_Store
+
+# Project files
+yolo/train.yaml
+yolo/train/**
+yolo/test/**
+yolo/results/detect/**
+yolo/results/train/**
