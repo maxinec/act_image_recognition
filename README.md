@@ -44,6 +44,8 @@ yolo/train/labels/1.txt
 * This repo uses 640px width for images.  The resizing is so that YOLO runs faster.
 * webp files are not accepted by Yolo
 * Image names should be unique in all of the dataset so that we can mix and match images.
+* CVAT is a great tool for generating annotations for the image files.  In the YOLO format, there is one text file for each image, so you can create new annotation tasks for each batch of images that you add in and still have the annotations work with the full set.  Note: if you create a CVAT project, the list of labels are shared between different tasks.
+* The current classes being detected are: ['steering wheel', 'hand'].  When we add more classes, the yaml file will also have to be updated.
 
 
 ## Running Yolo ##
