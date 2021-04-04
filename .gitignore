@@ -5,5 +5,6 @@
 yolo/train.yaml
 yolo/train/**
 yolo/test/**
-yolo/results/detect/**
-yolo/results/train/**
+yolo/results/detect/exp**
+yolo/results/train/exp**
+yolo/**/events.out*
