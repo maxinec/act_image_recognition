@@ -1,7 +1,7 @@
 # ACT Driving Simulator Image Recognition #
 This project contains custom datasets and annotations used to generate YOLO (You Only Look Once) weights for detecting driver positions within a vehicle.
 
-![Yolo demo](output.gif)
+![Yolo demo](demo.gif)
 
 
 ## General Workflow ##
