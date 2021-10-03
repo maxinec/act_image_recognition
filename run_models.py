@@ -2,17 +2,15 @@ import argparse
 import face_recognition
 import numpy as np
 
-# import keras
-# from keras.models import load_model
 import cv2
 import math
 import numpy as np
 from fer import FER
-# from future import print_function
 import matplotlib.pyplot as plt
 
 EMOTION_DETECTOR = FER(mtcnn=True)
-HIGHLIGHT_COLOR = (255, 255, 0)
+HIGHLIGHT_BLUE_COLOR = (255, 255, 0)
+HIGHLIGHT_RED_COLOR = (255, 49, 49)
 
 def get_facial_features(image, debug=False):
     faces = face_recognition.face_landmarks(image)
@@ -71,16 +69,16 @@ if __name__ == "__main__":
         for face_landmarks in face_feature_results:
             for facial_feature in face_landmarks.keys():
                 for point in face_landmarks[facial_feature]:
-                    cv2.circle(image, point, radius=0, color=HIGHLIGHT_COLOR, thickness=-1)
+                    cv2.circle(image, point, radius=0, color=HIGHLIGHT_BLUE_COLOR, thickness=-1)
 
         for emotion_result in emotion_results:
             face_bounds = emotion_result['box']
             emotions = emotion_result['emotions']
             box_corner_1 = (face_bounds[0], face_bounds[1]) # x, y coordinates
             box_corner_2 = (face_bounds[0] + face_bounds[2], face_bounds[1] + face_bounds[3]) # x + width, y + height
-            cv2.rectangle(image, box_corner_1, box_corner_2, HIGHLIGHT_COLOR)
+            cv2.rectangle(image, box_corner_1, box_corner_2, HIGHLIGHT_RED_COLOR)
             top_emotion, score = get_top_emotion(emotions)
-            cv2.putText(image, "{} {}".format(top_emotion, score), (face_bounds[0], face_bounds[1] - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, HIGHLIGHT_COLOR)
+            cv2.putText(image, "{} {}".format(top_emotion, score), (face_bounds[0], face_bounds[1] - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, HIGHLIGHT_RED_COLOR)
 
         cv2.imwrite("test/frame%d.jpg" % seconds, image)
         print("---------------------------------------------------")

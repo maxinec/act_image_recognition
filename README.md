@@ -4,7 +4,8 @@
 This project takes in driving simulator videos and produces datapoints such as:
 * Facial features (using the face-recognition library: https://github.com/ageitgey/face_recognition)
 * Emotion detection (using the facial expression recognition library: https://github.com/justinshenk/fer)
-* Hands and steering wheel detection (custom YOLO model trained - see [YOLO training readme](YOLO_README.md))
+* Hands and steering wheel detection (custom YOLO model trained - see [YOLO training readme](YOLO_README.md)). 
+ Pytorch weights from Spring 2021 are located at yolo/results/train/stock_image_train/weights/best.pt
 
 ## Datasets ##
 **DMD Dataset:**
