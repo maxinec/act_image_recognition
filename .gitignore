@@ -1,6 +1,9 @@
 # Mac OS files
 **/.DS_Store
 
+# IntelliJ files
+.idea
+
 # Project files
 yolo/train.yaml
 yolo/train/**
@@ -8,3 +11,6 @@ yolo/test/**
 yolo/results/detect/exp**
 yolo/results/train/exp**
 yolo/**/events.out*
+DMD_trimmed.mp4
+test/**
+
