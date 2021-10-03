@@ -27,9 +27,14 @@ Install the requirements.txt
 ```pip install -r requirements.txt```
 
 ## Running detections ##
-There is a one minute sample video from DMD data used for testing the script.  Unzip DMD_trimmed.mp4.zip to use.  
+Create a test directory for the script outputs.  
+
+There is a one minute sample video (DMD_trimmed.mov) from DMD data used for testing the script. 
+   
 ```python run_models.py <video file path> ```  
-This script runs through a video file and for every second, it will take a frame and run the image through all the models.  
+  
+
+This script runs through a video file and for every second (configurable), it will take a frame and run the image through all the models.  
 This will produce test images like the one in the readme with annotations from the models.  It will also print out more detailed information per frame, such as:  
 ```
 video position: 50 seconds
