@@ -71,3 +71,9 @@ python detect.py --source <directory or image/video file> --weights <weights fil
 ```
 This will generate a copy of your images under yolo/results/detect/exp<experiment number>/ with the detections rectangles.
 Note: the default confidence level is 0.25.
+
+**Exporting YOLO weights into another format:**
+```
+python export.py --weights yolo/results/train/stock_image_train/weights/best.pt  --include pb
+```
+This will generate Tensorflow compatible model files (pb, saved_model) in the same directory as the PyTorch weights.
