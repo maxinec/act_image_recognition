@@ -4,6 +4,7 @@ import logging
 import cv2
 import math
 import numpy as np
+import json
 import matplotlib.pyplot as plt
 from detection_models.facial_landmark import FacialLandmark
 from detection_models.emotion_recognition import EmotionRecognition
@@ -16,23 +17,38 @@ def run_video_against_models(video_path, write_test_images=False):
     vidcap = cv2.VideoCapture(video_path)
     try:
         success, image = vidcap.read()
+        jsonres = {}
         seconds = 0
         while success:
             logger.debug("video position: {} seconds".format(seconds))
             decorated_image = image
+            jsonr = {}
 
             for model in models:
                 result = model.run_recognition(image)
+                print(result, type(result), type(model))
+                if type(model) == FacialLandmark:
+                    jsonr["facial_landmark"] = result
+                else:
+                    jsonr["emotion_recognition"] = result
                 if write_test_images:
                     decorated_image = model.decorate_image(decorated_image, result)
 
             if write_test_images:
                 cv2.imwrite("test/frame%d.jpg" % seconds, decorated_image)
 
+            jsonres[seconds] = jsonr
+
             logger.debug("---------------------------------------------------")
             seconds += args.process_seconds
             vidcap.set(cv2.CAP_PROP_POS_MSEC, seconds * 1000)
             success, image = vidcap.read()
+
+        json_res = json.dumps(jsonres)
+
+        with open("test.json", "w") as outfile:
+            outfile.write(json_res)
+        
     except:
         logging.error("Failed to process video", exc_info=True)
     finally:
