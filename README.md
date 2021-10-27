@@ -32,7 +32,26 @@ Create a test directory for the script outputs.
 
 There is a one minute sample video (DMD_trimmed.mov) from DMD data used for testing the script. 
    
-```python run_models.py <video file path> ```  
+```python run_models.py DMD_trimmed.mov -v``` 
+
+```
+python run_models.py -h
+
+usage: run_models.py [-h] [-s PROCESS_SECONDS] [-v] video
+
+Run a driving simulator video through various models.
+
+positional arguments:
+  video                 input video to process
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -s PROCESS_SECONDS, --process_seconds PROCESS_SECONDS
+                        process a frame every X seconds
+  -v, --verbose         prints extra information and writes test images
+
+
+```
   
 
 This script runs through a video file and for every second (configurable), it will take a frame and run the image through all the models.  
