@@ -25,5 +25,5 @@ class FacialLandmark(BaseModel):
         for face_landmarks in result:
             for facial_feature in face_landmarks.keys():
                 for point in face_landmarks[facial_feature]:
-                    cv2.circle(image, point, radius=0, color=HIGHLIGHT_BLUE_COLOR, thickness=-1)
+                    cv2.circle(image, point, radius=0, color=HIGHLIGHT_TEAL_COLOR, thickness=-1)
         return image

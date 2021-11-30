@@ -40,8 +40,8 @@ class EmotionRecognition(BaseModel):
             emotions = emotion_result['emotions']
             box_corner_1 = (face_bounds[0], face_bounds[1]) # x, y coordinates
             box_corner_2 = (face_bounds[0] + face_bounds[2], face_bounds[1] + face_bounds[3]) # x + width, y + height
-            cv2.rectangle(image, box_corner_1, box_corner_2, HIGHLIGHT_RED_COLOR)
+            cv2.rectangle(image, box_corner_1, box_corner_2, HIGHLIGHT_BLUE_COLOR)
             top_emotion, score = self.get_top_emotion(emotions)
-            cv2.putText(image, "{} {}".format(top_emotion, score), (face_bounds[0], face_bounds[1] - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, HIGHLIGHT_RED_COLOR)
+            cv2.putText(image, "{} {}".format(top_emotion, score), (face_bounds[0], face_bounds[1] - 5), cv2.FONT_HERSHEY_DUPLEX, 0.5, HIGHLIGHT_BLUE_COLOR)
 
         return image
