@@ -8,11 +8,12 @@ import json
 import matplotlib.pyplot as plt
 from detection_models.facial_landmark import FacialLandmark
 from detection_models.emotion_recognition import EmotionRecognition
+from detection_models.hands_wheel import HandsWheel
 
 logger = logging.getLogger(__name__)
 
 def run_video_against_models(video_path, write_test_images=False):
-    models = [FacialLandmark(), EmotionRecognition()]
+    models = [FacialLandmark(), EmotionRecognition(), HandsWheel('./yolo/results/train/stock_image_train/weights/best.pt')]
 
     vidcap = cv2.VideoCapture(video_path)
     try:
@@ -29,8 +30,10 @@ def run_video_against_models(video_path, write_test_images=False):
                 print(result, type(result), type(model))
                 if type(model) == FacialLandmark:
                     jsonr["facial_landmark"] = result
-                else:
+                elif type(model) == EmotionRecognition:
                     jsonr["emotion_recognition"] = result
+                elif type(model) == HandsWheel:
+                    jsonr["hands_wheel"] = result
                 if write_test_images:
                     decorated_image = model.decorate_image(decorated_image, result)
 
