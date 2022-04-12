@@ -21,11 +21,16 @@ See the imagesets directory:
 Project tested using Python 3.8.5  
 Install the following pip/conda packages:
 * dlib
-* cmake  
-* tensorflow  
+* cmake
 
-Install the requirements.txt  
+Check out the Yolo project and install their requirements.txt first:  
+https://github.com/ultralytics/yolov5.git
+
+Install the requirements.txt from this repo:  
 ```pip install -r requirements.txt```
+
+If you are using Anaconda and there's a complaint about "version `GLIBCXX_3.4.29' not found", then run  
+```conda install -c conda-forge gxx_linux-64==11.1.0```
 
 ## Running detections ##
 Create a test directory for the script outputs.  
